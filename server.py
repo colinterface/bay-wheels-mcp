@@ -17,7 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Initialize FastMCP server
-mcp = FastMCP("bay-wheels-gbfs")
+mcp = FastMCP("bay-wheels")
 
 GBFS_DISCOVERY_URL = "https://gbfs.baywheels.com/gbfs/2.3/gbfs.json"
 

@@ -1,7 +1,7 @@
 [project]
-name = "bay-wheels-gbfs-mcp"
+name = "bay-wheels-mcp"
 version = "0.1.0"
-description = "MCP server for Bay Wheels bike share system (GBFS)"
+description = "MCP server for Bay Wheels bike share system"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

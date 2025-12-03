@@ -1,4 +1,4 @@
-# Bay Wheels GBFS MCP Server
+# Bay Wheels MCP Server
 
 This is an MCP server that provides access to Bay Wheels realtime bikeshare data.
 
@@ -24,7 +24,7 @@ Add this to your Claude Desktop configuration file:
       "command": "/opt/homebrew/bin/uv",
       "args": [
         "--directory",
-        "/path/to/bay-wheels-gbfs-mcp",
+        "/path/to/bay-wheels-mcp",
         "run",
         "server.py"
       ]
@@ -79,7 +79,7 @@ docker-compose down
 The server exposes a health check endpoint at `/health` for container orchestration:
 ```bash
 curl http://localhost:8000/health
-# Response: {"status":"healthy","service":"bay-wheels-gbfs-mcp","version":"0.1.0"}
+# Response: {"status":"healthy","service":"bay-wheels-mcp","version":"0.1.0"}
 ```
 
 ### Platform-Specific Deployment

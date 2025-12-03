@@ -1,5 +1,5 @@
 """
-HTTP server wrapper for Bay Wheels GBFS MCP server.
+HTTP server wrapper for Bay Wheels MCP server.
 This module creates a Starlette app with health checks for container deployment.
 """
 import os
@@ -26,7 +26,7 @@ async def health_check(request):
     """Health check endpoint for load balancers and orchestrators."""
     return JSONResponse({
         "status": "healthy",
-        "service": "bay-wheels-gbfs-mcp",
+        "service": "bay-wheels-mcp",
         "version": "0.1.0"
     })
 
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     port = int(os.getenv("PORT", "8000"))
     host = os.getenv("HOST", "0.0.0.0")
 
-    logger.info(f"Starting Bay Wheels GBFS MCP HTTP server on {host}:{port}")
+    logger.info(f"Starting Bay Wheels MCP HTTP server on {host}:{port}")
     uvicorn.run(
         app,
         host=host,

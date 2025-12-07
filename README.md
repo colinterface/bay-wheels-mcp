@@ -115,10 +115,53 @@ Use Azure Portal or Azure CLI to deploy the Docker image with port 8000 exposed.
 The deployed server uses StreamableHTTP transport. Configure your MCP client to connect to:
 
 ```
-URL: https://your-deployed-server.com/
+URL: https://your-deployed-server.com/mcp
 ```
 
+**Note**: The MCP endpoint is at `/mcp`, not the root path.
+
 See [MCP documentation](https://modelcontextprotocol.io) for client integration details.
+
+## Testing
+
+### Testing the Deployed Server
+
+The simplest way to test is using the health check endpoint:
+
+```bash
+# Test that the server is running
+curl https://your-server.com/health
+# Should return: {"status":"healthy","service":"bay-wheels-mcp","version":"0.1.0"}
+```
+
+For full MCP protocol testing, use an MCP client (Claude Desktop, mobile app, or custom client). The StreamableHTTP transport requires session management and proper header negotiation which is best handled by official MCP clients.
+
+### Testing with MCP Clients
+
+The best way to test the deployed server is to configure it in your MCP client:
+
+#### Claude Desktop (Remote Server)
+Add to `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "bay-wheels-remote": {
+      "url": "https://your-server.com/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
+```
+
+#### Mobile App
+Configure your mobile app's MCP client to connect to:
+```
+https://your-server.com/mcp
+```
+
+Then test the tools by asking Claude:
+- "Find me the nearest Bay Wheels bike near the Ferry Building in SF"
+- "Where can I return a bike near Dolores Park?"
 
 ## Tools
 

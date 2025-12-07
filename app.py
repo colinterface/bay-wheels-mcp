@@ -33,14 +33,11 @@ async def health_check(request):
 # Create the StreamableHTTP app from FastMCP
 mcp_app = mcp.streamable_http_app()
 
-# Wrap with health check route
-app = Starlette(
-    debug=False,
-    routes=[
-        Route("/health", health_check),
-        Mount("/", app=mcp_app),
-    ]
-)
+# Add health check route to the MCP app
+mcp_app.routes.insert(0, Route("/health", health_check))
+
+# Use the MCP app directly
+app = mcp_app
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "8000"))

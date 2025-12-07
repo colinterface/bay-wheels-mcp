@@ -34,7 +34,7 @@ wheels = [
 ]
 
 [[package]]
-name = "bay-wheels-gbfs-mcp"
+name = "bay-wheels-mcp"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
